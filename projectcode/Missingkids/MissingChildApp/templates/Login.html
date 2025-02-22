@@ -1,0 +1,91 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Missing Kid App</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <script LANGUAGE="Javascript">
+        function validate() {
+            var x = document.forms["f1"]["username"].value;
+            var y = document.forms["f1"]["password"].value;
+
+            if (x == null || x == "") {
+                window.alert("Username must be enter");
+                document.f1.username.focus();
+                return false;
+            }
+            if (y == null || y == "") {
+                window.alert("Password must be enter");
+                document.f1.password.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <center style="color:black">
+                    <font size="4" ><h4>Missing Kid Distinguishing proof Framework Utilizing Profound Learning and SVM</h4></font>
+                </center>
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <center><b>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'Login' %}">Official Login</a></li>
+                    <li><a href="{% url 'Upload' %}">Public Upload Suspected Child</a></li>
+                </b>
+                </center>
+            </ul>
+            <br class="clearfix" />
+        </div>
+
+        <div id="splash">
+            <img class="pic" src="{% static 'images/arch.png' %}" width="900" height="500" alt="" />
+        </div>
+        <br/><br/><br/><br/>
+        <br/><br/><br/><br/>
+        <br/><br/>
+        <center>
+            <form name="f1" method="post" action={% url 'OfficialLogin' %} OnSubmit="return validate()">
+                {% csrf_token %}<br/>
+                <h3 style="color:blue"><b>Official Login Screen</b></h3>
+
+                <font size="" color="black">
+                    <center>{{ data }}</center>
+                </font>
+
+                <table align="center" width="50">
+                    <tr>
+                        <td style="color:black"><b>Username</b></td>
+                        <td><input type="text" name="t1" style="font-family: Comic Sans MS" size="30" /></td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="color:black"><b>Password</b></td>
+                        <td><input type="password" name="t2" style="font-family: Comic Sans MS" size="30" /></td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Login" style="font-size: 22px">
+                        </td>
+                </table>
+                <br/><br/>
+    </div>
+
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+
+</body>
+
+</html>
